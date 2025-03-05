@@ -11,20 +11,34 @@
 
 <!-- form_with部分 -->
 <%= form_with model: @book do |f| %>
-
-  <div class="set_form">
-    <p class="title_label">Title</p>
+  <div class="field">
+    <% if @book.errors.include?(:body) %>
+      <div class="field_with_errors">
+        <label for="book_title">Title</label>
+      </div>
+    <% else %>
+      <label for="book_title">Title</label>
+      <% end %>
     <%= f.text_field :title %>
   </div>
 
-  <div class="set_form">
-    <p class="title_label">Body</p>
+  <div class="field">
+    <% if @book.errors.include?(:body) %>
+      <div class="field_with_errors">
+      <label for="book_title">Body</label>
+      </div>
+    <% else %>
+      <label for="book_title">Body</label>
+      <% end %>
     <%= f.text_area :body %>
   </div>
-	<div class="set_form">
+	
     <%= f.submit 'Update Book' %>
-  </div>
+
 <% end %>
+
+
+
 <span>
     <%= link_to "Show", book_path(@book.id) %>
 </span>|
